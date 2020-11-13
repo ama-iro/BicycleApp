@@ -1,7 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
 // ミックスイン
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -9,9 +8,12 @@
   box-sizing:         border-box;
 }
 
+// ヘッダーの高さ
+$header-height: 50px;
+
 // 全ページ共通
 body {
-  padding-top: 50px;
+  padding-top: $header-height;
 }
 
 section {
@@ -56,6 +58,7 @@ p {
 }
 
 // ヘッダー
+
 .navbar {
   border: none
 }
@@ -67,7 +70,7 @@ p {
 #logo {
   float: left;
   img {
-    height: 50px;
+    height: $header-height;
   }
 }
 
@@ -80,3 +83,5 @@ footer {
     float: center;
   }
 }
+
+// static_pages_home
