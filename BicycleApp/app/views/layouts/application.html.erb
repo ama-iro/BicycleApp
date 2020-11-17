@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>アプリ名</title>
+    <title>MTBB</title>
     <%= render 'layouts/rails_default' %>
     <%= render 'layouts/shim' %>
   </head>
@@ -9,8 +9,15 @@
   <body>
     <div id="page">
       <%= render 'layouts/header' %>
-      <% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% if flash[:notice] %>
+        <div class="alert alert-info">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
       <% end %>
       <%= yield %>
     </div>
