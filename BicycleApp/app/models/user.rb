@@ -6,9 +6,13 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
+  validates :name, presence: true
+  validates :introduction, length: { maximum: 200 }
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          # :omniauthable, omniauth_providers:[:twitter]
+
 
   private
     def downcase_email
