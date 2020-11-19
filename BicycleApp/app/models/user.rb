@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :introduction, length: { maximum: 200 }
 
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          # :omniauthable, omniauth_providers:[:twitter]
