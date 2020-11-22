@@ -6,5 +6,6 @@ FactoryBot.define do
     birthday { Date.new(1987, 06, 05) }
     password { "testuser" }
     password_confirmation { "testuser" }
+    introduction { "はじめまして！" }
   end
 end
