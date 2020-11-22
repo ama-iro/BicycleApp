@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'users/new'
-  get 'users/show'
+  get 'users/show', to: 'users#show'
   get 'users/index'
   devise_for :users, controllers: {
        registrations: 'users/registrations',

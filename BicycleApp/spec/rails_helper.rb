@@ -1,8 +1,8 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require 'capybara/rspec' 
+require 'capybara/rspec'
 require 'spec_helper'
 
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f } 
+# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
@@ -64,5 +64,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  config.include Devise::Test::IntegrationHelpers, type: :system # 追加
+
+  # システムスペックを使用
+  config.include Devise::Test::IntegrationHelpers, type: :system
+  #sign_inヘルパーを提供してくれます
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  # rspecのテストコード中でFactory_botのメソッドを使用する際に、クラス名の指定を省略
+  config.include FactoryBot::Syntax::Methods
 end

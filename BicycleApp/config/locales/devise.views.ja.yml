@@ -7,7 +7,7 @@ ja:
         password: "パスワード"
         birthday: "生年月日"
         gender: "性別"
-        name: "お名前"
+        name: "ユーザー名"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
 

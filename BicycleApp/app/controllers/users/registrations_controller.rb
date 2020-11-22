@@ -50,10 +50,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :birthday, :gender])
   end
 
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   user_path(id: current_user.id)
-  # end
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  # アカウント編集後、プロフィール画面に移動する
+  def after_update_path_for(resource)
+    users_show_path(id: current_user.id)
+  end
+
+  # アカウント登録後、プロフィール画面に移動する
+  def after_sign_up_path_for(resource)
+    users_show_path(id: current_user.id)
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
