@@ -4,8 +4,8 @@ FactoryBot.define do
     sequence(:email) { |n| "test#{n}@example.com" }
     gender { 0 }
     birthday { Date.new(1987, 06, 05) }
-    password { "testuser" }
-    password_confirmation { "testuser" }
+    password { "testuser1" }
+    password_confirmation { "testuser1" }
     introduction { "はじめまして！" }
   end
 end

@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   let(:user) { create(:user) }
 
   context "バリデーション" do
-    it "名前、メールアドレスがあれば有効な状態であること" do
+    it "全ての項目を正しく記入すれば有効な状態であること" do
       expect(user).to be_valid
     end
 
@@ -48,6 +48,18 @@ RSpec.describe User, type: :model do
      email = "ExamPle@example.com"
      user = create(:user, email: email)
      expect(user.email).to eq email.downcase
-   end
+    end
+
+    it "パスワードがなければ無効な状態であること" do
+      user = build(:user, password: nil, password_confirmation: nil)
+      user.valid?
+      expect(user.errors[:password]).to include("は8文字以上で入力してください", "は不正な値です")
+    end
+
+    it "パスワードが7文字以下なら無効であること" do
+      user = build(:user, password: "abcdef1", password_confirmation: "abcdef1")
+      user.valid?
+      expect(user.errors[:password])
+    end
   end
 end
