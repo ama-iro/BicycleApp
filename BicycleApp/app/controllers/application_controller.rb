@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
   # deviseコントローラーにストロングパラメータを追加する
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  #ログイン後、プロフィール画面に移動
+  def after_sign_in_path_for(resource)
+    users_show_path(id: current_user.id)
+  end
+
   protected
   def configure_permitted_parameters
     # サインアップ時にname birthday genderのストロングパラメータを追加
