@@ -4,5 +4,5 @@ User.create!(
   gender: 0,
   birthday: "1995-07-18",
   introduction: 'testtesttest',
-  password: 'password'
+  password: 'password1'
 )
