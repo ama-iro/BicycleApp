@@ -1,9 +1,9 @@
 class Post < ApplicationRecord
-  validates :
+  belongs_to :user
   validates :area, presence: true
   validates :place, presence: true
   validates :required_time, presence: true
-  validates :description, length: { maximum: 400 }
+  validates :description, length: { maximum: 400 },
+                          presence: true
 
-  belongs_to :user
 end

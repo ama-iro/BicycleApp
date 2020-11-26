@@ -12,7 +12,6 @@ ja:
     attributes:
       post:
         id: ID
-        name: 料理名
         area: 地域
         place: 場所
         description: コース詳細

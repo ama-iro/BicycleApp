@@ -2,8 +2,8 @@ FactoryBot.define do
   factory :post do
     area { 1 }
     place { "MyString" }
-    required_time { 1 }
+    required_time { 40 }
     description { "MyText" }
-    user { nil }
+    association :user
   end
 end
