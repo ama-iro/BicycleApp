@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let!(:post) { create(:post) }
+  let(:post_yesterday) { create(:post, :yesterday) }
+  let(:post_one_week_ago) { create(:post, :one_week_ago) }
+  let(:post_one_month_ago) { create(:post, :one_month_ago) }
+  let(:post) { create(:post) }
 
   context "バリデーション" do
     it "有効な状態であること" do
@@ -36,6 +39,12 @@ RSpec.describe Post, type: :model do
       post = build(:post, description: "a" * 401)
       post.valid?
       expect(post.errors[:description]).to include("は400文字以内で入力してください")
+    end
+  end
+
+  context "投稿順序" do
+    it "最も最近の投稿が最初の投稿になっていること" do
+      expect(post).to eq Post.first
     end
   end
 end
