@@ -17,7 +17,21 @@ RSpec.describe "Users", type: :system do
         fill_in "パスワード", with: "testpassword2"
         fill_in "確認用パスワード", with: "testpassword2"
         click_button "Sign up"
-        expect(page).to have_content("about me")
+        expect(page).to have_text("アカウント登録が完了しました。")
+      end
+    end
+  end
+
+  describe "プロフィール編集ページ" do
+    before do
+      valid_login(user)
+      visit users_show_path
+      click_link "編集"
+    end
+
+    context "ページレイアウト" do
+      it "正しいタイトルが表示されることを確認" do
+        expect(page).to have_title full_title('プロフィール編集')
       end
     end
   end
