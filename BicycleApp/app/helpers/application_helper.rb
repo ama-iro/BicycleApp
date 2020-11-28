@@ -1,6 +1,6 @@
 module ApplicationHelper
   def full_title(page_title = '')
-    base_title = 'アプリ名'
+    base_title = 'MTTB'
     if page_title.blank?
       base_title
     else
