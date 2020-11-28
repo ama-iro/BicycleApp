@@ -38,6 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -56,12 +57,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # アカウント編集後、プロフィール画面に移動する
   def after_update_path_for(resource)
-    users_show_path(id: current_user.id)
+    users_show_path
   end
 
   # アカウント登録後、プロフィール画面に移動する
   def after_sign_up_path_for(resource)
-    users_show_path(id: current_user.id)
+    users_show_path
   end
 
 

@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
     users_show_path(id: current_user.id)
   end
 
+
+
   protected
   def configure_permitted_parameters
     # サインアップ時にname birthday genderのストロングパラメータを追加

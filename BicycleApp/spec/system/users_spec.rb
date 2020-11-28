@@ -5,7 +5,8 @@ RSpec.describe "Users", type: :system do
 
   describe "ユーザー登録ページ" do
     context "ユーザー登録処理" do
-      it "有効なユーザーでユーザー登録を行うとユーザー登録成功のフラッシュが表示されること" do
+      it "有効なユーザーでユーザー登録を行うとユーザー登録成功のフラッシュ
+         が表示されること" do
         visit new_user_registration_path
         fill_in "ユーザー名", with: "name2"
         select "男性", from: "性別"
@@ -16,7 +17,7 @@ RSpec.describe "Users", type: :system do
         fill_in "パスワード", with: "testpassword2"
         fill_in "確認用パスワード", with: "testpassword2"
         click_button "Sign up"
-
+        expect(page).to have_content("about me")
       end
     end
   end
