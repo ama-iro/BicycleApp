@@ -57,12 +57,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # アカウント編集後、プロフィール画面に移動する
   def after_update_path_for(resource)
-    users_show_path
+    "/users/show/#{current_user.id}"
   end
 
   # アカウント登録後、プロフィール画面に移動する
   def after_sign_up_path_for(resource)
-    users_show_path
+    "/users/show/#{current_user.id}"
   end
 
 

@@ -3,7 +3,7 @@
     <%= link_to(image_tag("header_logo.png"), root_url, id: 'logo') %>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
-        <li><%= link_to 'myプロフィール', users_show_path %></li>
+        <li><%= link_to 'myプロフィール', "/users/show/#{current_user.id}" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "What's MTBB?", about_path %></li>

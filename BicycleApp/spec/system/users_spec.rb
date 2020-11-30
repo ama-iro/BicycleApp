@@ -25,7 +25,7 @@ RSpec.describe "Users", type: :system do
   describe "プロフィール編集ページ" do
     before do
       valid_login(user)
-      visit users_show_path
+      visit "/users/show/#{user.id}"
       click_link "編集"
     end
 
@@ -59,7 +59,7 @@ RSpec.describe "Users", type: :system do
   describe "プロフィールページ" do
     before do
       valid_login(user)
-      visit users_show_path
+      visit "/users/show/#{user.id}"
     end
 
     it "プロフィール編集ページへのリンクが表示されていることを確認" do
