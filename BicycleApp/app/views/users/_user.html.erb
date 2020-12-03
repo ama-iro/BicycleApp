@@ -1,3 +1,5 @@
 <li>
   <%= link_to user.name, "/users/show/#{user.id}" %>
+  | <%= link_to "削除", user_registration_path(user), method: :delete,
+                                data: { confirm: "本当に削除しますか？" } %>
 </li>
