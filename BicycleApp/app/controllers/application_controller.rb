@@ -9,8 +9,10 @@ class ApplicationController < ActionController::Base
 
   #ログイン後、プロフィール画面に移動
   def after_sign_in_path_for(resource)
-    users_show_path(id: current_user.id)
+    users_index_path
   end
+
+
 
   protected
   def configure_permitted_parameters
