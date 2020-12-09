@@ -1,6 +1,10 @@
 <% provide(:title, "プロフィール") %>
 <h1>about me</h1>
 
+<% if @user.admin? %>
+  <h3>管理者ユーザー</h3>
+<% end %>
+
 <h3>ユーザー名</h3>
 <%= @user.name %>
 <h3>メールアドレス</h3>

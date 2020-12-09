@@ -65,12 +65,16 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+
+
   # システムスペックを使用
   config.include Devise::Test::IntegrationHelpers, type: :system
   #sign_inヘルパーを提供
   config.include Devise::Test::IntegrationHelpers, type: :request
   # rspecのテストコード中でFactory_botのメソッドを使用する際に、クラス名の指定を省略
   config.include FactoryBot::Syntax::Methods
+
+
 
   config.include LoginSupport
 end

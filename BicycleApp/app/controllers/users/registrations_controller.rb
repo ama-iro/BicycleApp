@@ -4,6 +4,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
+  def destroy_user
+    @user = User.find(params[:id])
+
+    if current_user.admin?
+      @user.destroy
+      flash[:notice] = "ユーザーの削除に成功しました"
+      redirect_to root_path
+    else
+      flash[:alert] = "他人のアカウントは削除できません"
+      redirect_to root_path
+    end
+  end
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -25,8 +38,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
+  # def destroy_use
+
   # end
 
   # GET /resource/cancel
