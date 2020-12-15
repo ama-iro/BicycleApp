@@ -24,6 +24,7 @@ class User < ApplicationRecord
          # :omniauthable, omniauth_providers:[:twitter]
 
 
+
   private
     def downcase_email
       self.email = email.downcase

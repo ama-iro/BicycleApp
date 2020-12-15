@@ -17,3 +17,16 @@
 <% if current_user.id == @user.id %>
   <p><%= link_to '編集', edit_user_registration_path %></p>
 <% end %>
+
+
+<div class="row">
+  <div class="col-md-9">
+    <% if @user.post.any? %>
+      <h3>投稿 (<%= @user.post.count %>)</h3>
+      <ol class="posts">
+        <%= render @post %>
+      </ol>
+      <%= will_paginate @post %>
+    <% end %>
+  </div>
+</div>
