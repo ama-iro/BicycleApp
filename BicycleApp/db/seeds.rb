@@ -6,3 +6,13 @@ User.create!(
   introduction: 'testtesttest',
   password: 'password1'
 )
+
+User.create!(
+  name: 'AdminUser',
+  email: 'admin@admin.com',
+  gender: 2,
+  birthday: "1999-11-11",
+  introduction: 'I am admin user',
+  password: 'password1',
+  admin: true
+)
