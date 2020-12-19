@@ -1,4 +1,4 @@
-<% if logged_in? %>
+<% if user_signed_in? %>
   <div class="container">
     <h3>みんなの投稿 (<%= @feed_items.count %>)</h3>
     <%= render 'shared/feed' %>

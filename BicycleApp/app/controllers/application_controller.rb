@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   #ログイン後、プロフィール画面に移動
   def after_sign_in_path_for(resource)
-    users_index_path
+    top_page_path
   end
 
 
