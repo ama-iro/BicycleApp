@@ -23,6 +23,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable
          # :omniauthable, omniauth_providers:[:twitter]
 
+  def feed
+    Post.where("user_id = ?", id)
+  end
+
 
   private
     def downcase_email

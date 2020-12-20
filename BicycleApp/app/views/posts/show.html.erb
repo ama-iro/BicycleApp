@@ -1,0 +1,26 @@
+<% provide(:title, "#{@post.title}") %>
+<div class="container">
+  <div class="row">
+    <h2 class="post-name"><%= @post.title %></h2>
+    <div class="change-post">
+      <% if current_user == @post.user %>
+        <%= link_to "編集", edit_post_path(@post), class: 'edit-post' %>　
+      <% end %>
+    </div>
+    <h4><%= @post.description %></h4>
+
+
+    <div class="show-dish-other-info">
+      <div class="dish-info">
+        <h5>所要時間：</h5><h4><%= @post.required_time %></h4> <h5>分</h5>
+      </div>
+      <% if current_user.admin? || current_user.id = @post.user_id %>
+      <%= link_to "料理を削除する", post_path(@post), method: :delete,
+                                 data: { confirm: "本当にこの料理を削除してよろしいですか？" } %>
+      <% end %>
+
+    </div>
+
+  </div>
+
+</div>

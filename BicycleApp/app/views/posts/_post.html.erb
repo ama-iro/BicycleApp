@@ -1,0 +1,14 @@
+<li id="post-<%= post.id %>">
+  <span class="title"><%= link_to post.title, post_path(post) %></span>
+  <span class="area"><%= link_to post.area, "#" %></span>
+  <span class="place"><%= link_to post.place, "#" %></span>
+  <span class="description"><%= post.description %></span><br>
+  <span class="required_time">所要時間：<%= post.required_time %>分</span>
+  <span class="timestamp">
+    <%= time_ago_in_words(post.created_at) %>前に投稿
+  </span>
+  <% if current_user.admin? || (current_user == post.user) %>
+  <%= link_to "削除", post_path(post), method: :delete,
+                     data: { confirm: "本当に削除しますか？" } %>
+  <% end %>
+</li>
