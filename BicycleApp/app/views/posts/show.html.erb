@@ -20,6 +20,9 @@
       <% end %>
 
     </div>
+    <span class="picture">
+      <%= link_to((image_tag @post.picture.url), post_path(@post.id), class: 'post-picture') if @post.picture.url.present? %>
+    </span>
 
   </div>
 
