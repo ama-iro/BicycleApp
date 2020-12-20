@@ -48,7 +48,7 @@ before_action :correct_user, only: [:edit, :update]
   private
 
     def post_params
-      params.require(:post).permit(:title, :description, :area, :place, :required_time)
+      params.require(:post).permit(:title, :description, :area, :place, :required_time, :picture)
     end
 
     def correct_user
