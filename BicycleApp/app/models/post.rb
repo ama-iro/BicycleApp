@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :favorites, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
   validates :area, presence: true
@@ -7,7 +8,7 @@ class Post < ApplicationRecord
   validates :required_time, presence: true
   validates :description, length: { maximum: 400 }, presence: true
   validates :description, presence: true
-  validates :picture_size
+  validate :picture_size
 
   private
 

@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :post, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
 
@@ -25,6 +26,20 @@ class User < ApplicationRecord
 
   def feed
     Post.where("user_id = ?", id)
+  end
+
+  def favorite(post)
+    Favorite.create!(user_id: id, post_id: post.id)
+  end
+
+  # 料理をお気に入り解除する
+  def unfavorite(post)
+    Favorite.find_by(user_id: id, post_id: post.id).destroy
+  end
+
+  # 現在のユーザーがお気に入り登録してたらtrueを返す
+  def favorite?(post)
+    !Favorite.find_by(user_id: id, post_id: post.id).nil?
   end
 
 
