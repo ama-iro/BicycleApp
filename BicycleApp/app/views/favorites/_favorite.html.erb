@@ -1,0 +1,14 @@
+<% @post = Post.find(favorite.post_id) %>
+<% user = @post.user %>
+<li id="favorite-<%= favorite.id %>">
+  <div class="row favorite-dish">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-7">
+      <p><%= link_to @post.title, post_path(@post) %></p>
+      <p><%= @post.description %></p>
+      <p class="post-user">投稿者 <%= link_to user.name, "/users/show/#{user.id}" %></p>
+    </div>
+  </div>
+</li>

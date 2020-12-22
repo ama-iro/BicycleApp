@@ -16,6 +16,10 @@ Rails.application.routes.draw do
        sessions: 'users/sessions'
   }
 
+  get :favorites, to: 'favorites#index'
+  post   "favorites/:post_id/create"  => "favorites#create"
+  delete "favorites/:post_id/destroy" => "favorites#destroy"
+
   devise_scope :user do
     delete 'users/:id' => 'users/registrations#destroy_user', as: :user_destroy
   end
