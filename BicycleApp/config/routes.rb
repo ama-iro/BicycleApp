@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :posts
   resources :comments, only: [:create, :destroy]
+  resources :notifications, only: :index 
 
 
   root 'static_pages#home'
