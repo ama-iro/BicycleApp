@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'users/index'
 
   resources :posts
+  resources :comments, only: [:create, :destroy]
 
 
   root 'static_pages#home'

@@ -7,12 +7,13 @@ before_action :correct_user, only: [:edit, :update]
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   def create
     @post = current_user.post.build(post_params)
     if @post.save
-      flash[:notice] = "料理が登録されました！"
+      flash[:notice] = "投稿しました！"
       redirect_to post_path(@post)
     else
       render 'posts/new'
