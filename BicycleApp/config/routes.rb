@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notification/index'
   get 'users/show/:id', to: 'users#show'
   get 'users/new'
   get 'users/index'
