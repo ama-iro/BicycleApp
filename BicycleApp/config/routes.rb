@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  get 'notification/index'
+  get 'notifications/index'
   get 'users/show/:id', to: 'users#show'
   get 'users/new'
   get 'users/index'
 
   resources :posts
   resources :comments, only: [:create, :destroy]
-  resources :notifications, only: :index 
+  resources :notifications, only: :index
 
 
   root 'static_pages#home'
