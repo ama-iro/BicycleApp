@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get :about,        to: 'static_pages#about'
   get :use_of_terms, to: 'static_pages#terms'
   get :top_page,     to: 'static_pages#top_page'
+  get :search,       to: 'static_pages#search'
 
   devise_for :users, controllers: {
        registrations: 'users/registrations',

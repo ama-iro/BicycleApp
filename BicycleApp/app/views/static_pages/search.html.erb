@@ -1,0 +1,15 @@
+<% provide(:title, '投稿一覧') %>
+<div id="fh5co-portfolio">
+  <div class="container">
+    <% if params[:q][:title_or_description_cont] == "" %>
+      <h3>検索キーワードがありません。</h3>
+    <% elsif @posts.present?%>
+      <h3>”<%= params[:q][:title_or_description_cont] %>”の検索結果：<%= @posts.count %>件</h3>
+      <ul class="posts">
+        <%= render @posts %>
+      </ul>
+    <% else %>
+      <h3>検索ワードを含む投稿はありませんでした。</h3>
+    <% end %>
+  </div>
+</div>

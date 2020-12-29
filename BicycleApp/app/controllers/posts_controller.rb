@@ -11,7 +11,7 @@ before_action :correct_user, only: [:edit, :update]
   end
 
   def create
-    @post = current_user.post.build(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:notice] = "投稿しました！"
       redirect_to post_path(@post)
@@ -53,7 +53,7 @@ before_action :correct_user, only: [:edit, :update]
     end
 
     def correct_user
-      @post = current_user.post.find_by(id: params[:id])
+      @post = current_user.posts.find_by(id: params[:id])
       redirect_to root_url if @post.nil?
     end
 end
