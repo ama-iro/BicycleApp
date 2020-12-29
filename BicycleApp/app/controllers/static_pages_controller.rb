@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_action :set_search, only: [:index, :show]
+
   def home
   end
 
@@ -9,8 +11,14 @@ class StaticPagesController < ApplicationController
   end
 
   def top_page
-    if user_signed_in?
-     @feed_items = current_user.feed.paginate(page: params[:page], per_page: 5)
-    end
+    @search = Post.ransack(params[:q]) #ransackの検索メソッド
+    @posts = @search.result(distinct: true).order(created_at: "DESC").paginate(page: params[:page], per_page: 5)
   end
+
+  def search
+    @search = Post.ransack(params[:q]) #ransackの検索メソッド
+    @posts = @search.result(distinct: true).order(created_at: "DESC").paginate(page: params[:page], per_page: 5)
+  end
+
+
 end

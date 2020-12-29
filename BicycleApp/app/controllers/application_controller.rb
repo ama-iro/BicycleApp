@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :set_search
   protect_from_forgery with: :exception
 
   # home,about以外ログイン済ユーザーのみにアクセスを許可する
@@ -12,6 +13,10 @@ class ApplicationController < ActionController::Base
     top_page_path
   end
 
+  def set_search
+    @search = Post.ransack(params[:q]) #ransackの検索メソッド
+    @posts = @search.result(distinct: true).order(created_at: "DESC").paginate(page: params[:page], per_page: 5)
+  end
 
 
   protected
