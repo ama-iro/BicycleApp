@@ -1,0 +1,122 @@
+@import '~bootstrap/scss/bootstrap';
+
+// ミックスイン
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+// ヘッダーの高さ
+$header-height: 51px;
+$main-color: #00a0e9;
+$main-color-hover: #00558F;
+
+// 全ページ共通
+body {
+
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+// テキストの見栄え
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+// ヘッダー
+
+header {
+  padding-bottom: 20px
+}
+
+.navbar {
+  border-bottom: 1px solid #e7e7e7;
+  background-color: #FFFFFF;
+  li {
+
+  }
+}
+
+#logo {
+  float: left;
+  img {
+    height: $header-height;
+  }
+}
+
+.btn-logo {
+  color: $main-color;
+  border: solid 2px $main-color;
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: .4s;
+  &:hover {
+    background: $main-color;
+    color: white;
+  }
+}
+.nav-item {
+  padding: 0 10px;
+}
+
+.nav-link {
+  color: $main-color;
+  &:hover {
+    color: $main-color-hover
+  }
+}
+
+// 通知
+li.new_notification > a > span {
+  color: red;
+}
+
+
+// フッター
+footer {
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+  small {
+    float: center;
+  }
+}
+
+// 新規登録ページ
