@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
 
   validates :password, format: { with: VALID_PASSWORD_REGEX },
@@ -15,8 +15,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
 
   validates :name, presence: true, length: { maximum: 20 }
-  validates :gender, presence: true
-  validates :birthday, presence: true
+
   validates :introduction, length: { maximum: 200 }
 
 
@@ -29,11 +28,12 @@ class User < ApplicationRecord
     Post.where("user_id = ?", id)
   end
 
+# お気に入り登録する
   def favorite(post)
     Favorite.create!(user_id: id, post_id: post.id)
   end
 
-  # 料理をお気に入り解除する
+  # 投稿をお気に入り解除する
   def unfavorite(post)
     Favorite.find_by(user_id: id, post_id: post.id).destroy
   end

@@ -1,4 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
 
 // ミックスイン
 @mixin box_sizing {
@@ -7,14 +9,34 @@
   box-sizing:         border-box;
 }
 
+@mixin placeholder($color) {
+  &::placeholder {
+    color: $color;
+  }
+  // IE
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  // Edge
+  &::-ms-input-placeholder {
+    color: $color;
+  }
+}
+
 // ヘッダーの高さ
 $header-height: 51px;
 $main-color: #00a0e9;
 $main-color-hover: #00558F;
 
 // 全ページ共通
-body {
 
+body {
+  padding-top: $header-height;
+
+          }
+
+#page {
+  margin-top: 16px;
 }
 
 section {
@@ -48,9 +70,10 @@ h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
+  padding-top: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
+
 }
 
 p {
@@ -60,13 +83,10 @@ p {
 
 // ヘッダー
 
-header {
-  padding-bottom: 20px
-}
 
 .navbar {
   border-bottom: 1px solid #e7e7e7;
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 1);
   li {
 
   }
@@ -111,6 +131,7 @@ li.new_notification > a > span {
 
 // フッター
 footer {
+  background-color: white;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777;
@@ -120,3 +141,123 @@ footer {
 }
 
 // 新規登録ページ
+#sign_up_background {
+  text-align: center;
+  background-image: url("/sign_up_image.jpg");
+  background-size:cover;
+  background-position: center center;
+  position: relative;
+
+  &:before {
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: ' ';
+  }
+}
+.headtext-signup {
+  background-color: rgba(255,255,255,0.3);
+}
+
+
+.input-box {
+  position: relative;
+  background-color: rgba(255,255,255,0);
+  width: 60%;
+  padding: 100px 0 100px 0;
+  text-align: center;
+}
+
+.signup-textform {
+  background-color: rgba(255,255,255,0.3);
+  color: white;
+}
+
+.signup-form {
+  margin-bottom: 20px;
+  input {
+    @include placeholder(rgba(0,0,0,0.8));
+    border: none;
+    &:focus {
+
+    }
+  }
+}
+
+.button-signup {
+  margin: 30px 0;
+  height: 50px;
+}
+
+.signup-bottom-link {
+  color: rgba(255,255,255,0.8);
+}
+
+.member {
+  font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+
+
+// ログイン画面
+.layout_login {
+  background-color: rgba(0, 160, 233, 0.2);
+  text-align: center;
+}
+
+.layout_body {
+  padding-bottom: 20px;
+}
+
+.-centered {
+  display: inline-block;
+  width: 300px;
+}
+
+.headtext {
+  text-align: left;
+  font-family: 'Sawarabi Mincho', sans-serif;
+  font-size: 30px;
+  color: black;
+}
+
+
+.form-group {
+  text-align: left;
+
+  input[type="email"] {
+    width: 100%;
+  }
+  input[type="password"] {
+    width: 100%;
+  }
+  input[type="name"] {
+    width: 100%;
+  }
+  input[type="password_confirmation"] {
+    width: 100%;
+  }
+}
+
+.label-layout {
+  margin-bottom: 0;
+}
+
+.button-basic {
+  width: 100%;
+  background-color: rgba(0, 160, 233, 0.8);
+  color: white;
+  padding: none;
+  border: none;
+  &:hover {
+    background-color: $main-color-hover;
+  }
+}
+
+// エラーメッセージ
+#error_explanation {
+color: white;
+}

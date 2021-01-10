@@ -1,40 +1,42 @@
 <header>
-  <nav class="navbar navbar-fixed-top navbar-expand-lg">
-    <%= link_to(image_tag("header_logo.png"), root_url, id: 'logo') %>
-    <% if user_signed_in? %>
-      <ul class="navbar-nav mr-auto">
-        <% if current_user.notification == true %>
-        <li class="new_notification nav-item">
-        <% else %>
-        <li class="no_notification nav-item">
-        <% end %>
-        <%= link_to notifications_index_path do %>
-          <span class="nav-link"><i class="fas fa-bell fa-lg"></i></span>
-        <% end %>
-        </li>
-      </ul>
-    <% end %>
-    <a class ="navbar-toggler btn-logo" data-toggle="collapse" href="#navbarNavDropdown" aria-controls="navbarNavDropdown" role="button" aria-expanded="false" aria-label="Toggle navigation">
-      Menu<i class="fas fa-bars ml-1"></i>
-    </a>
-    <% if user_signed_in? %>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><%= link_to 'myプロフィール', "/users/show/#{current_user.id}", class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to 'ユーザー一覧', users_index_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to '投稿する', new_post_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to '投稿一覧', top_page_path, class: "nav-link" %></li>
-      </ul>
-    </div>
-    <% else %>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><%= link_to "What's MTBB?", about_path , class: "nav-link"%></li>
-        <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: "nav-link" %></li>
-      </ul>
-    </div>
-    <% end %>
-  </nav>
+  <div class="fixed-top">
+    <nav class="navbar navbar-fixed-top navbar-expand-lg">
+      <%= link_to(image_tag("header_logo.png"), root_url, id: 'logo') %>
+      <% if user_signed_in? %>
+        <ul class="navbar-nav mr-auto">
+          <% if current_user.notification == true %>
+          <li class="new_notification nav-item">
+          <% else %>
+          <li class="no_notification nav-item">
+          <% end %>
+          <%= link_to notifications_index_path do %>
+            <span class="nav-link"><i class="fas fa-bell fa-lg"></i></span>
+          <% end %>
+          </li>
+        </ul>
+      <% end %>
+      <a class ="navbar-toggler btn-logo" data-toggle="collapse" href="#navbarNavDropdown" aria-controls="navbarNavDropdown" role="button" aria-expanded="false" aria-label="Toggle navigation">
+        Menu<i class="fas fa-bars ml-1"></i>
+      </a>
+      <% if user_signed_in? %>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><%= link_to 'myプロフィール', "/users/show/#{current_user.id}", class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to 'ユーザー一覧', users_index_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to '投稿する', new_post_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to '投稿一覧', top_page_path, class: "nav-link" %></li>
+        </ul>
+      </div>
+      <% else %>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><%= link_to "What's MTBB?", about_path , class: "nav-link"%></li>
+          <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: "nav-link" %></li>
+        </ul>
+      </div>
+      <% end %>
+    </nav>
+  </div>
 </header>

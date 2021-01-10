@@ -1,49 +1,35 @@
 <% provide(:title, "ユーザー登録") %>
-
-
-  <h2>Sign up</h2>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true %>
+<div id="sign_up_background">
+  <div class="input-box -centered">
+    <div class="headtext headtext-signup">
+      <p>Signup</p>
     </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="form-group signup-form">
+        <%= f.text_field :name, type: "name", class: "signup-textform", placeholder: "ユーザー名", autofocus: true %>
+      </div>
 
-    <div class="field">
-      <%= f.label :gender %><br />
-      <%= f.select :gender, {'男性': 0, '女性': 1, 'その他': 2},
-                        { include_blank: '選択してください'},
-                        { required: true } %>
-    </div>
+      <div class="form-group signup-form">
+        <%= f.email_field :email, class: "signup-textform", placeholder: "メールアドレス",autocomplete: "email" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :birthday %><br />
-      <%= f.date_select :birthday, use_month_numbers: true,
-                                   start_year: 1930,
-                                   end_year: (Time.now.year - 10),
-                                   default: Date.new(1990, 1, 1) %>
-    </div>
+      <div class="form-group signup-form">
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, class: "signup-textform", placeholder: "パスワード(8文字以上)", autocomplete: "new-password" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.text_field :email, autocomplete: "email" %>
-    </div>
+      <div class="form-group signup-form">
+        <%= f.password_field :password_confirmation, class: "signup-textform", placeholder: "パスワード(確認用)", autocomplete: "new-password" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :password %>
-      <h5>半角英数字8文字以上(英字数字を各1回以上使用すること)</h5>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
+      <div class="actions">
+        <%= f.submit "新規登録", class: "button-basic button-signup" %>
+      </div>
+    <% end %>
 
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Sign up" %>
-    </div>
-  <% end %>
+    <p class="signup-bottom-link">または　<%= link_to 'ログイン', new_user_session_path %></p>
+  </div>
+</div>
