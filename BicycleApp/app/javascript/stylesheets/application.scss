@@ -23,6 +23,21 @@
   }
 }
 
+@mixin center-width($width) {
+  width: $width;
+}
+
+@mixin headtext($color) {
+  text-align: left;
+  font-family: 'Sawarabi Mincho', sans-serif;
+  font-size: 30px;
+  color: $color;
+}
+
+@mixin label-color($color){
+  color: $color;
+}
+
 // ヘッダーの高さ
 $header-height: 51px;
 $main-color: #00a0e9;
@@ -159,16 +174,20 @@ footer {
   }
 }
 .headtext-signup {
+  @include headtext(black);
   background-color: rgba(255,255,255,0.3);
 }
 
 
-.input-box {
+.layout_body_signup {
   position: relative;
   background-color: rgba(255,255,255,0);
   width: 60%;
   padding: 100px 0 100px 0;
   text-align: center;
+  padding-bottom: 20px;
+  display: inline-block;
+  @include center-width(300px);
 }
 
 .signup-textform {
@@ -203,30 +222,43 @@ footer {
 
 
 // ログイン画面
-.layout_login {
-  background-color: rgba(0, 160, 233, 0.2);
-  text-align: center;
+
+#login-image{
+  background-image: url("/login_image.jpg");
+  background-size:cover;
+  background-position: center center;
 }
 
-.layout_body {
-  padding-bottom: 20px;
+.no-gutters {
+  margin:0;
+  padding:0;
 }
 
-.-centered {
+.no-gutters　> .col,
+.no-gutters　> [class*="col-"] {
+  margin:0;
+  padding:0;
+}
+
+.layout_body_login {
+  background-color: rgba(	0,0,25,1);
   display: inline-block;
-  width: 300px;
 }
 
-.headtext {
-  text-align: left;
-  font-family: 'Sawarabi Mincho', sans-serif;
-  font-size: 30px;
-  color: black;
+.login-body {
+  padding-bottom: 20px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.headtext-login {
+  @include headtext(rgba(229,229,229,1));
 }
 
 
 .form-group {
   text-align: left;
+  @include label-color(rgba(229,229,229,1));
 
   input[type="email"] {
     width: 100%;
@@ -240,6 +272,10 @@ footer {
   input[type="password_confirmation"] {
     width: 100%;
   }
+  textarea[type="introduction"] {
+    width: 100%;
+  }
+
 }
 
 .label-layout {
@@ -257,7 +293,58 @@ footer {
   }
 }
 
-// エラーメッセージ
+// 新規登録エラーメッセージ
 #error_explanation {
 color: white;
+}
+
+.layout_body_useredit {
+  @include center-width(300px);
+  padding-bottom: 20px;
+  display: inline-block;
+}
+
+// プロフィール画面
+
+.show_background {
+  background-color: rgba(235,255,255,1);
+  text-align: center;
+}
+
+.layout_body_usershow {
+  width: 60%;
+  padding-bottom: 20px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.user_show_top {
+  background-color: rgba(25,25,25,1);
+  padding-bottom: 10px;
+}
+
+.plofile-name {
+  border-bottom: 1px solid #eaeaea;
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.show-image {
+  margin-bottom: 10px;
+}
+
+.show-introduction {
+  color: rgba(229,229,229,1)
+}
+
+.show-edit {
+  padding: 5px;
+  font-size: 10px;
+  .show-edit-button {
+    color: white;
+    background-color: rgba(0,0,0,0.8);
+    padding: 5px 7px;
+    border-radius: 2px;
+  }
 }

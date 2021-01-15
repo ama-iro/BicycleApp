@@ -1,33 +1,39 @@
 <% provide(:title, "ログイン") %>
-<div class="layout_login">
-  <div class ="layout_body -centered">
-    <div class="login">
-      <p>Login</p>
+<div class="layout_background">
+  <div class="row no-gutters">
+    <div class="col-lg-4" id="login-image">
+
     </div>
-    <div class="login_form">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="form-group">
-          <%= f.label :email, class: "label-layout" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "session_email" %>
-
+    <div class="col-lg-8 layout_body_login">
+      <div class ="login-body">
+        <div class="headtext-login">
+          <p>Login</p>
         </div>
+        <div class="login_form">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-group">
+              <%= f.label :email, class: "label-layout" %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
 
-        <div class="form-group">
-          <%= f.label :password, class: "label-layout" %><br />
-          <%= f.password_field :password, autocomplete: "current-password", id: "session_password" %>
+            <div class="form-group">
+              <%= f.label :password, class: "label-layout" %><br />
+              <%= f.password_field :password, autocomplete: "current-password" %>
+            </div>
+
+            <% if devise_mapping.rememberable? %>
+              <div class="form-group">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %>
+
+            <div class="actions">
+              <%= f.submit "Log in", class: "button-basic" %>
+            </div>
+          <% end %>
         </div>
-
-        <% if devise_mapping.rememberable? %>
-          <div class="form-group">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-        <% end %>
-
-        <div class="actions">
-          <%= f.submit "Log in", class: "button-basic" %>
-        </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

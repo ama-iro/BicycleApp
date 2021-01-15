@@ -13,6 +13,11 @@
             <span class="nav-link"><i class="fas fa-bell fa-lg"></i></span>
           <% end %>
           </li>
+          <li class="nav-item">
+            <% if @user.admin? %>
+              管理者ユーザー
+            <% end %>
+          </li>
         </ul>
       <% end %>
       <a class ="navbar-toggler btn-logo" data-toggle="collapse" href="#navbarNavDropdown" aria-controls="navbarNavDropdown" role="button" aria-expanded="false" aria-label="Toggle navigation">
