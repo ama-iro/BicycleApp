@@ -1,5 +1,19 @@
 <%= form_with model: @post, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+
+  <div id="image-box-1">
+    <div class="item-num-0#image-box__container">
+
+      <%= f.fields_for :images, @post.images.build do |i| %>
+        <div class="input-field__contents-image__drop__js-file">
+          <%= i.file_field :image_url %>
+          <label for="img-file"><i class="fas fa-camera"></i></label>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
   <div class = 'form-group'>
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control', id: 'post_title' %>
@@ -24,10 +38,7 @@
     <%= f.number_field :required_time, class: 'form-control', id: 'post_required_time',
                                        step: 0.5, in: 0.5..24.0 %>
   </div>
-  <span class="picture">
-    <%= f.label :picture %>　<span class="input-unneed">※任意</span>
-    <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'dish_picture' %>
-  </span>
+
 
   <%= f.submit "投稿する", class: 'btn btn-primary' %>
 <% end %>

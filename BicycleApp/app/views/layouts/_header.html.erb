@@ -13,11 +13,16 @@
             <span class="nav-link"><i class="fas fa-bell fa-lg"></i></span>
           <% end %>
           </li>
+          <% if current_user.admin? %>
           <li class="nav-item">
-            <% if @user.admin? %>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuadmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               管理者ユーザー
-            <% end %>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuadmin">
+              <%= link_to 'ユーザー一覧', users_index_path, class: "dropdown-item" %>
+            </div>
           </li>
+          <% end %>
         </ul>
       <% end %>
       <a class ="navbar-toggler btn-logo" data-toggle="collapse" href="#navbarNavDropdown" aria-controls="navbarNavDropdown" role="button" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +33,6 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"><%= link_to 'myプロフィール', "/users/show/#{current_user.id}", class: "nav-link" %></li>
           <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to 'ユーザー一覧', users_index_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to '投稿する', new_post_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to '投稿一覧', top_page_path, class: "nav-link" %></li>
         </ul>
