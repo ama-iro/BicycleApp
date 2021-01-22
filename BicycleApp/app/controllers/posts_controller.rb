@@ -3,6 +3,7 @@ before_action :correct_user, only: [:edit, :update]
 
   def new
     @post = Post.new
+    @post.images.build
   end
 
   def show
@@ -49,7 +50,8 @@ before_action :correct_user, only: [:edit, :update]
   private
 
     def post_params
-      params.require(:post).permit(:title, :description, :area, :place, :required_time, :picture)
+      params.require(:post).permit(:title,
+        :description, :area, :place, :required_time, :picture, images_attributes: [:image_url])
     end
 
     def correct_user
