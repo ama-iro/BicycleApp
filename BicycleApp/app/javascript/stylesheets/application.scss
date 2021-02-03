@@ -69,6 +69,10 @@ textarea {
   }
 }
 
+.hidden {
+  display: none;
+}
+
 // テキストの見栄え
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
@@ -398,4 +402,51 @@ color: white;
 // 投稿フォーム
 .headtext-post {
   @include headtext(black);
+}
+
+.clearfix {
+  background-color: rgba(212,246,246,1);
+  border: solid 1px black;
+  min-height: 100px;
+  #previews {
+    list-style: none;
+    height: 100%;
+    padding-left: 0;
+    margin-bottom: 0;
+    width: 100%;
+
+    .input {
+      width: 100%;
+      height: 100%;
+      .upload-label {
+
+        .upload-label__text {
+          font-size: 20px;
+          vertical-align: middle;
+        }
+      }
+    }
+    li {
+      float: left;
+
+    }
+    .image-preview__wapper {
+      text-align: center;
+      padding-top: 5px;
+      .preview {
+        width: 80%;
+        height: 80%;
+      }
+    }
+    .image-preview_btn {
+      background-color: rgba(212,246,246,1);
+      .image-preview_btn_delete {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.preview {
+
 }

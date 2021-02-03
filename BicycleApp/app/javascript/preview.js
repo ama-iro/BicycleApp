@@ -1,8 +1,8 @@
 $(document).on("click", ".image_upload", function () {
   //$liに追加するためのプレビュー画面のHTML
-  var preview = $('<div class="image-preview__wapper"><img class="preview"></div><div class="image-preview_btn"><div class="image-preview_btn_edit">編集</div><div class="image-preview_btn_delete">削除</div></div>');
+  var preview = $('<div class="image-preview__wapper"><img class="preview"></div><div class="image-preview_btn"><button type="button" class="btn btn-dark image-preview_btn_delete">Delete</button></div>');
     //次の画像を読み込むためのinput。
-  var append_input = $(`<li class="input"><label class="upload-label"><div class="upload-label__text">ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード<div class="input-area"><input class="hidden image_upload" type="file"></div></div></label></li>`)
+  var append_input = $(`<li class="input"><label class="upload-label"><div class="upload-label__text"><i class="far fa-images"><br>クリック、または画像をドラッグ</i><div class="input-area"><input class="hidden image_upload" type="file"></div></div></label></li>`)
 
   $ul = $("#previews");
   $li = $(this).parents("li");
@@ -34,7 +34,8 @@ $(document).on("click", ".image_upload", function () {
     $lis = $ul.find(".image-preview");
 
     $("#previews li").css({
-      width: `114px`,
+      width: `20%`
+
     });
     //"ul"に新しい"li(inputボタン)"を追加させる。
     if ($lis.length <= 4) {
