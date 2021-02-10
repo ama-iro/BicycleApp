@@ -9,7 +9,8 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("preview.js")
-require("preview_delete")
+require("preview_delete.js")
+require("slide.js")
 
 import 'bootstrap';
 import '../stylesheets/application';

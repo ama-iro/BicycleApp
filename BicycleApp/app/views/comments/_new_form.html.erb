@@ -1,14 +1,15 @@
 <%= form_with model:@comment do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <%= hidden_field_tag :post_id, @post.id %>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-1">
-      <div class="field">
-        <%= f.text_area :content, placeholder: "コメントを追加..." %>
-      </div>
+  <div class="row comment-new-row">
+    <div class="col-md-1 icon">
+      icon
     </div>
-    <div class="col-md-3">
-      <%= f.submit "コメント", class: "btn btn-primary" %>
+    <div class="col-md-9 comment-form">
+      <%= f.text_area :content, placeholder: "コメントを追加...", class: "comment-box" %>
+    </div>
+    <div class="col-md-2 comment-btn">
+      <%= f.submit "コメント", class: "btn btn-primary btn-style" %>
     </div>
   </div>
 <% end %>

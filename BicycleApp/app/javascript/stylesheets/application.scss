@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
 
+
 // ミックスイン
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -400,7 +401,7 @@ color: white;
 }
 
 // 投稿フォーム
-.headtext-post {
+.headtext-post-new {
   @include headtext(black);
 }
 
@@ -449,4 +450,150 @@ color: white;
 
 .preview {
 
+}
+
+// post/show-
+.post_show_top {
+  .post-show-left {
+    float: left;
+    height: 80px;
+  }
+  .post-show-user {
+    padding: 10px 15px;
+    p {
+      margin-bottom: 0;
+    }
+    .user-data {
+      padding-left: 20px;
+      .post-create-time {
+        font-size: 10px;
+      }
+      .post-user-edit {
+        font-size: 15px;
+      }
+    }
+  }
+  .post-show-title {
+    padding-top: 10px;
+    .favorite {
+      width: 50%;
+      text-align: center;
+    }
+    .comment {
+      width: 50%;
+      text-align: center;
+      .comment-icon {
+        color: gray;
+        font-size: 30px;
+      }
+      .comment-count {
+        font-size: 15px;
+        .comment-count-number {
+          color: red;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}
+
+
+.post-show-middle {
+  padding: 10px 0 ;
+  .post_show_image {
+    .show_image_area {
+      width: 150px;
+      .carousel-indicators {
+        width: 150px;
+        margin-bottom: 8px;
+
+      }
+      .carousel-inner {
+        margin-left: 22.5px;
+      }
+    }
+  }
+}
+
+.carousel-control-next {
+  left: 172.5px;
+  background-color: rgba(0,0,0,0.3);
+}
+.carousel-control-prev {
+
+  background-color: rgba(0,0,0,0.3);
+}
+
+
+
+// favorite unfavorite css
+.like-btn-like {
+  color: gray;
+  font-size: 30px;
+}
+
+.like-btn-unlike {
+  color: red;
+  font-size: 30px;
+}
+
+.fav-count {
+  font-size: 15px;
+  .fav-count-number {
+    color: red;
+    font-size: 25px;
+  }
+}
+
+// comment
+.comment-row{
+  padding: 15px 0;
+  .comment-new-row {
+    height: 30px;
+    width: 100%;
+    margin: 0;
+    .icon {
+      padding: 0px;
+      height: 30px;
+    }
+    .comment-form {
+      height: 30px;
+      width: 100%;
+      .comment-box {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .comment-btn {
+      .btn-style {
+        font-size: 5px;
+      }
+    }
+  }
+}
+
+.comments-show {
+  padding-left: 0;
+  margin-bottom: 0;
+  .comments-li {
+    width: 100%;
+    margin: 0;
+    padding: 10px 0;
+    .icon {
+      padding: 0;
+      height: 50px;
+    }
+    .comments-content {
+
+      .name {
+
+      }
+      .content {
+
+      }
+      .date {
+        font-size: 10px;
+      }
+    }
+  }
 }

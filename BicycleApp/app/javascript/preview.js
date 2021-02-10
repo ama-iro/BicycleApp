@@ -51,8 +51,8 @@ $(document).on("click", ".image_upload", function () {
       //image_urlの番号を更新するために、現在の番号を除去
       $(input).removeAttr("image_url");
       $(input).attr({
-        image_url: "product[images_attributes][" + num + "][image_url]",
-        id: "product_images_attributes_" + num + "_image_url",
+        image_url: "post[images_attributes][" + num + "][image_url]",
+        id: "post_images_attributes_" + num + "_image_url",
       });
     });
   });

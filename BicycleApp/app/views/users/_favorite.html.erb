@@ -2,5 +2,10 @@
             method: :post,
             class: 'like',
             remote: true do %>
-  <div class="like-btn-like"><i class="fa fa-heart"></i> お気に入りに登録する</div>
+  <div class="like-btn-like">
+    <i class="fa fa-heart"></i>
+  </div>
 <% end %>
+<div class="fav-count">
+  <b class="fav-count-number"><%= @favorite %></b> いいね
+</div>

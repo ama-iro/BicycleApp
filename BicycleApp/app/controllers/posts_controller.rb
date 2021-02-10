@@ -8,7 +8,12 @@ before_action :correct_user, only: [:edit, :update]
 
   def show
     @post = Post.find(params[:id])
+    @user = User.find(@post.user_id)
+    @images = Image.where(@post.id.to_s)
     @comment = Comment.new
+    @comment_count = Comment.where(post_id: @post.id).count
+    @favorite = Favorite.where(post_id: @post.id).count
+    @comment_user = User.find(current_user.id)
   end
 
   def create

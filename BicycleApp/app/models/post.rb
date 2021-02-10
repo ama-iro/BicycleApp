@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   default_scope -> { order(created_at: :desc) }
+  validates :title, presence: true, length: { maximum: 20 }
   validates :area, presence: true
   validates :place, presence: true
   validates :required_time, presence: true

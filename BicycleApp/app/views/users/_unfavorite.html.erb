@@ -2,5 +2,10 @@
             method: :delete,
             class: 'unlike',
             remote: true do %>
-  <div class="like-btn-unlike"><i class="fa fa-heart"></i> お気に入りに登録済み</div>
+  <div class="like-btn-unlike">
+    <i class="fa fa-heart"></i>
+  </div>
 <% end %>
+<div class="fav-count">
+  <b class="fav-count-number"><%= @favorite %></b> いいね
+</div>
