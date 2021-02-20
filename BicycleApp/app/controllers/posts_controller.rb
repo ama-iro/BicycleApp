@@ -22,11 +22,13 @@ before_action :correct_user, only: [:edit, :update]
       flash[:notice] = "投稿しました！"
       redirect_to post_path(@post)
     else
+      flash[:alert] = "投稿内容を確認してください"
       render 'posts/new'
     end
   end
 
   def edit
+    # Image.destroy_by(post_id: params[:id])
     @post = Post.find(params[:id])
     @post.images.build
   end

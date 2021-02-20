@@ -33,7 +33,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"><%= link_to 'myプロフィール', "/users/show/#{current_user.id}", class: "nav-link" %></li>
           <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to '投稿する', new_post_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to '投稿する', new_post_path, class: "nav-link", data: {"turbolinks" => false}%></li>
           <li class="nav-item"><%= link_to '投稿一覧', top_page_path, class: "nav-link" %></li>
         </ul>
       </div>

@@ -400,7 +400,7 @@ color: white;
   height: 250px;
 }
 
-// 投稿フォーム
+// 投稿フォーム post/new
 .headtext-post-new {
   @include headtext(black);
 }
@@ -448,9 +448,16 @@ color: white;
   }
 }
 
-.preview {
 
+#btn-bad {
+  background-color: gray;
 }
+
+#btn-good {
+  
+}
+
+
 
 // post/show-
 .post_show_top {

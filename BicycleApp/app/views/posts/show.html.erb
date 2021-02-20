@@ -39,21 +39,41 @@
     <div class="col-md-3 offset-md-2 post_show_image">
       <div id="carouselIndicators" class="carousel slide show_image_area" data-interval="false" data-ride="carousel">
         <ol class="carousel-indicators">
-          <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselIndicators" data-slide-to="2"></li>
+          <% if @post.images.count == 2 %>
+            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselIndicators" data-slide-to="1"></li>
+          <% elsif @post.images.count == 3 %>
+            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselIndicators" data-slide-to="2"></li>
+          <% elsif @post.images.count == 4 %>
+            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselIndicators" data-slide-to="3"></li>
+          <% elsif @post.images.count == 5 %>
+            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselIndicators" data-slide-to="4"></li>
+          <% end %>
         </ol>
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <%= image_tag "test_image_bicycle150" %>
-          </div>
-          <div class="carousel-item">
-            <%= image_tag "test_image_bicycle150" %>
-          </div>
-          <div class="carousel-item">
-            <%= image_tag "test_image_bicycle150" %>
-          </div>
+          <% @post.images.each_with_index do |img, n| %>
+            <% if n == 0 %>
+              <div class="carousel-item active">
+                <%= image_tag img.image_url.to_s %>
+              </div>
+            <% elsif n >= 1 %>
+              <div class="carousel-item">
+                <%= image_tag img.image_url.to_s %>
+              </div>
+            <% end %>
+          <% end %>
         </div>
+
+
         <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
@@ -71,7 +91,7 @@
         <li>かかった時間：<%= @post.required_time %>時間</li>
       </ul>
       <div>
-        tagaras
+        tagaras<%= @post.images.count %>
       </div>
     </div>
   </div>

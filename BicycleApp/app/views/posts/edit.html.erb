@@ -7,22 +7,8 @@
       </div>
       <%= form_with model: @post, local: true do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-        <%= f.fields_for :images do |i| %>
-          <div class="clearfix">
-            <ul id="previews">
-              <li class="input">
-                <label class="upload-label">
-                  <div class="upload-label__text">
-                    <i class="far fa-images"><br>クリック、または画像をドラッグ</i>
-                    <div class="input-area">
-                      <%= i.file_field :image_url, class: "hidden image_upload" %>
-                    </div>
-                  </div>
-                </label>
-              </li>
-            </ul>
-          </div>
-        <% end %>
+
+
 
         <div class = 'form-group'>
           <%= f.label :title %>
@@ -50,7 +36,7 @@
         </div>
 
         <%= f.submit "更新する", class: 'btn btn-primary' %>
-      
+
       <% end %>
 
     </div>

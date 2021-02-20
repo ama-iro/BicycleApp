@@ -10,7 +10,8 @@ require("channels")
 require("jquery")
 require("preview.js")
 require("preview_delete.js")
-require("slide.js")
+require("count.js")
+require("button.js")
 
 import 'bootstrap';
 import '../stylesheets/application';

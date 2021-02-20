@@ -27,32 +27,41 @@
     </div>
   </div>
 
+  <div class="button-error-judge">
+    <div class = 'form-group'>
+      <%= f.label :title %>
+        <div class="title-error"></div>
+      <%= f.text_field :title, class: 'form-control title-count', id: 'post_title' %>
+      <P class="title-text-count"></P>
+    </div>
+    <div class = 'form-group'>
+        <div class="area-error"></div>
+      <%= f.label :area %>
+      <%= f.select :area, {'北海道': 0, '東北': 1, '関東': 2, '中部': 3, '近畿': 4,
+                           '中国': 5, '四国': 6, '九州、沖縄': 7},
+                          { include_blank: '選択してください'},
+                          class: 'area-count'
+                           %>
+    </div>
+    <div class = 'form-group'>
+      <%= f.label :place %>
+        <div class="place-error"></div>
+      <%= f.text_field :place, size: "30x4", class: 'form-control place-count', id: 'post_place' %>
+    </div>
 
-  <div class = 'form-group'>
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control', id: 'post_title' %>
-  </div>
-  <div class = 'form-group'>
-    <%= f.label :area %>
-    <%= f.select :area, {'北海道': 0, '東北': 1, '関東': 2, '中部': 3, '近畿': 4,
-                         '中国': 5, '四国': 6, '九州、沖縄': 7},
-                        { include_blank: '選択してください'}
-                         %>
-  </div>
-  <div class = 'form-group'>
-    <%= f.label :place %>
-    <%= f.text_field :place, size: "30x4", class: 'form-control', id: 'post_place' %>
-  </div>
-  <div class = 'form-group'>
-    <%= f.label :description %>
-    <%= f.text_area :description, size: "60x4", class: 'form-control', id: 'post_description' %>
-  </div>
-  <div class = 'form-group'>
-    <%= f.label :required_time %> [時間]
-    <%= f.number_field :required_time, class: 'form-control', id: 'post_required_time',
-                                       step: 0.5, in: 0.5..24.0 %>
-  </div>
+    <div class = 'form-group'>
+      <%= f.label :description %>
+        <div class="desc-error"></div>
+      <%= f.text_area :description, size: "60x4", class: 'form-control desc-count', id: 'post_description' %>
+      <p class="desc-text-count"></p>
+    </div>
 
-
-  <%= f.submit "投稿する", class: 'btn btn-primary' %>
+    <div class = 'form-group'>
+      <%= f.label :required_time %> [時間]
+        <div class="required_time-error"></div>
+      <%= f.number_field :required_time, class: 'form-control required_time-count', id: 'post_required_time',
+                                         step: 0.5, in: 0.5..24.0 %>
+    </div>
+  <%= f.submit "投稿する", class: 'btn btn-primary btn-post', id: 'btn-bad', disabled: true %>
+  </div>
 <% end %>
