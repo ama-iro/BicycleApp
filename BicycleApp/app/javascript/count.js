@@ -68,15 +68,15 @@ $(function (){
   // place,repuired_time,areaについても行う。
   // 字数制限はないので、記入されているかいないかで判断し、記入が無ければ警告文を出す。
 
-  var place_count = $(".place-count").text().length;
-  var required_time_count = $(".required_time-count").text().length;
+  var place_count = $(".place-count").val();
+  var required_time_count = $(".required_time-count").val();
   var area_count = $(".area-count").val().length;
 
-  if (place_count == 0)  {
+  if (place_count == "")  {
     $(".place-error").html("<span>何か入力してください</span>").css("color","red");
   }
 
-  if (required_time_count == 0)  {
+  if (required_time_count == "")  {
     $(".required_time-error").html("<span>所要時間を入力してください</span>").css("color","red");
   }
 

@@ -1,31 +1,12 @@
 <%= form_with model: @post, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <div class="form-image">
-    <div class="form-image__title">
-      <label for="">投稿画像</label>
-      <span>必須</span>
-      <div class="form-image__text">
-        5マイまでアップロードできます
-      </div>
-      <%= f.fields_for :images do |i| %>
-        <div class="clearfix">
-          <ul id="previews">
-            <li class="input">
-              <label class="upload-label">
-                <div class="upload-label__text">
-                  <i class="far fa-images"><br>クリック、または画像をドラッグ</i>
-                  <div class="input-area">
-                    <%= i.file_field :image_url, class: "hidden image_upload" %>
-                  </div>
-                </div>
-              </label>
-            </li>
-          </ul>
-        </div>
-      <% end %>
-    </div>
-  </div>
+
+  <% if controller.action_name == "new" %>
+    <%= render 'posts/image_form', f: f %>
+  <% elsif controller.action_name == "edit" %>
+    <%= render 'posts/image_form_edit', f: f %>
+  <% end %>
 
   <div class="button-error-judge">
     <div class = 'form-group'>
@@ -62,6 +43,9 @@
       <%= f.number_field :required_time, class: 'form-control required_time-count', id: 'post_required_time',
                                          step: 0.5, in: 0.5..24.0 %>
     </div>
-  <%= f.submit "投稿する", class: 'btn btn-primary btn-post', id: 'btn-bad', disabled: true %>
+    <div class="btn-message">
+      <span>※はすべて入力してください</span>
+    </div>
+    <%= f.submit "#{@btn_word}", class: 'btn btn-primary btn-post', id: 'btn-bad', disabled: true %>
   </div>
 <% end %>

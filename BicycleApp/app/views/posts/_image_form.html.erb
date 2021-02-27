@@ -1,0 +1,26 @@
+<div class="form-image">
+  <div class="form-image__title">
+    <label for="">投稿画像</label>
+    <span>必須</span>
+    <div class="form-image__text">
+      5マイまでアップロードできます
+    </div>
+
+    <%= f.fields_for :images do |i| %>
+      <div class="clearfix">
+        <ul id="previews">
+          <li class="input">
+            <label class="upload-label">
+              <div class="upload-label__text">
+                <i class="far fa-images"><br>クリック、または画像をドラッグ</i>
+                <div class="input-area">
+                  <%= i.file_field :image_url, class: "hidden image_upload" %>
+                </div>
+              </div>
+            </label>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>

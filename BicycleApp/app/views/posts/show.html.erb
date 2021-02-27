@@ -12,10 +12,10 @@
         <p class="post-create-time"><%= time_ago_in_words(@post.created_at) %>前に投稿</p>
         <p class="post-user-edit">
           <% if current_user == @post.user %>
-            <%= link_to "編集", edit_post_path(@post) %>　
+            <%= link_to "編集", edit_post_path(@post), data: {"turbolinks" => false} %>　
           <% end %>
           <% if current_user.admin? || current_user.id = @post.user_id %>
-            <%= link_to "削除", post_path(@post), method: :delete,
+            <%= link_to "削除", post_path(@post), data: {"turbolinks" => false}, method: :delete,
                                      data: { confirm: "本当に削除してよろしいですか？" } %>
           <% end %>
         </p>
@@ -89,6 +89,7 @@
         <li>地域：<%= @post.area %></li>
         <li>具体的な場所：<%= @post.place %></li>
         <li>かかった時間：<%= @post.required_time %>時間</li>
+
       </ul>
       <div>
         tagaras<%= @post.images.count %>

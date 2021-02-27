@@ -4,6 +4,7 @@ before_action :correct_user, only: [:edit, :update]
   def new
     @post = Post.new
     @post.images.build
+    @btn_word = "投稿する"
   end
 
   def show
@@ -28,19 +29,39 @@ before_action :correct_user, only: [:edit, :update]
   end
 
   def edit
-    # Image.destroy_by(post_id: params[:id])
     @post = Post.find(params[:id])
     @post.images.build
+    @btn_word = "更新する"
   end
 
   def update
     @post = Post.find(params[:id])
+
+    # editで画像を変更する
+    # イメージは元のデータを全て消去し、新しく画像データを作り直す。
+    # ただし、もともとのデータを消してしまうと更新時にエラーが発生する
+    # 再投稿時の画像数＜元の画像数の場合、画像が消えずに残ってしまう
+    # そこで両者を配列に入れ、差分のデータを消す作業を与える。
+
+    # もともとの画
+    before_images_urls = @post.images.length
+    # 再投稿の画像はhidden_fieldで取得
+
+    # 再投稿の画像がもともとの画像より少ないとき、
+    if before_images_urls.to_s > params[:image_count]
+      Image.where(post_id: params[:id]).each.with_index(1) do |img, n|
+        img.destroy if n.to_s > params[:image_count]
+      end
+    end
+
     if @post.update_attributes(post_params)
+
       flash[:notice] = "投稿が更新されました！"
       redirect_to @post
     else
       render 'posts/edit'
     end
+
   end
 
   def destroy
